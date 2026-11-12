@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111f"><title>NEXUS-OS</title>
+<style>
+:root{--bg:#06101d;--panel:#0b1b2d;--panel2:#10253b;--line:#1c3b58;--blue:#35a8ff;--cyan:#64e3ff;--txt:#e8f4ff;--muted:#83a1bb;--green:#55e6b0;--red:#ff6e82}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% -15%,#123b60 0,transparent 42%),var(--bg);color:var(--txt);font:14px Inter,system-ui,Arial;min-height:100vh}
+button,input,textarea{font:inherit}button{cursor:pointer;color:inherit}.shell{display:grid;grid-template-columns:232px 1fr;min-height:100vh}.side{background:#071523dd;border-right:1px solid var(--line);padding:22px 14px;display:flex;flex-direction:column;gap:24px}.brand{display:flex;align-items:center;gap:11px;padding:3px 9px}.logo{width:37px;height:37px;border:1px solid var(--cyan);border-radius:12px;display:grid;place-items:center;color:var(--cyan);font-weight:900;box-shadow:0 0 22px #35a8ff44}.brand b{letter-spacing:3px;font-size:16px}.brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:2px;margin-top:3px}.navlabel{color:#55748e;font-size:10px;letter-spacing:2px;padding:0 10px}.nav{display:grid;gap:5px}.nav button{background:transparent;border:1px solid transparent;text-align:left;padding:12px;border-radius:10px;color:#9bb4c9;display:flex;gap:12px;align-items:center}.nav button.active,.nav button:hover{background:#102b43;border-color:#245274;color:white}.ico{width:18px;text-align:center;color:var(--cyan)}.sidefoot{margin-top:auto;padding:12px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:11px}.dot{display:inline-block;width:7px;height:7px;background:var(--green);border-radius:50%;margin-right:7px;box-shadow:0 0 10px var(--green)}
+main{padding:24px clamp(16px,3vw,38px);min-width:0}.top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:28px}.crumb{color:var(--muted);font-size:12px}.topright{display:flex;gap:10px;align-items:center}.status{border:1px solid #1c5b52;background:#0c2b2b;padding:8px 12px;border-radius:30px;color:var(--green);font-size:11px}.clock{color:var(--muted);font-variant-numeric:tabular-nums}.pagehead{margin:0 0 6px;font-size:clamp(24px,4vw,34px);letter-spacing:-1px}.sub{color:var(--muted);margin:0 0 24px}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{background:linear-gradient(145deg,#10253aee,#091827ee);border:1px solid var(--line);border-radius:16px;padding:18px;min-width:0;box-shadow:0 12px 30px #0002}.stat{grid-column:span 3}.stat small,.muted{color:var(--muted)}.stat strong{display:block;font-size:25px;margin:10px 0 3px}.wide{grid-column:span 8}.narrow{grid-column:span 4}.half{grid-column:span 6}.full{grid-column:1/-1}.cardtitle{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;font-weight:650}.tag{font-size:10px;color:var(--cyan);border:1px solid #245274;padding:4px 8px;border-radius:20px}.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.quick button,.action{border:1px solid var(--line);background:#0c2033;border-radius:12px;padding:15px 10px;text-align:left}.quick button:hover,.action:hover{border-color:var(--blue);background:#12304a}.quick b{display:block;margin-top:10px}.quick span{font-size:20px;color:var(--cyan)}.bar{height:7px;background:#1b3449;border-radius:8px;overflow:hidden;margin:10px 0}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));width:0}.rowline{display:flex;justify-content:space-between;gap:10px;margin:12px 0;color:var(--muted);font-size:12px}.btn{background:#123b5c;border:1px solid #28648d;border-radius:9px;padding:9px 13px}.btn.primary{background:linear-gradient(110deg,#0878c9,#1555a2);border:0}.btn.danger{background:#3a1b2a;border-color:#71354b}.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.input{background:#071523;border:1px solid var(--line);color:var(--txt);border-radius:9px;padding:10px;min-width:0}.filelist{display:grid;gap:6px}.fileitem{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center;padding:11px;border:1px solid transparent;border-radius:9px;background:#0a1a2a}.fileitem:hover{border-color:#245274}.fileitem small{color:var(--muted)}.fileitem button{background:transparent;border:0;color:var(--cyan)}.editor{width:100%;min-height:300px;background:#061321;color:#d9efff;border:1px solid var(--line);border-radius:10px;padding:14px;font:13px ui-monospace,monospace;resize:vertical}.terminal{background:#030a12;border:1px solid var(--line);border-radius:12px;padding:14px;min-height:220px;color:#a5e8ca;white-space:pre-wrap;font:12px ui-monospace,monospace}.terminalrow{display:flex;gap:8px;margin-top:10px}.terminalrow input{flex:1}.empty{color:var(--muted);padding:28px;text-align:center}.hidden{display:none!important}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#123b55;border:1px solid #3285b4;padding:11px 16px;border-radius:10px;z-index:5;box-shadow:0 8px 30px #0008}
+@media(max-width:850px){.shell{grid-template-columns:1fr}.side{padding:10px 12px;border-right:0;border-bottom:1px solid var(--line);gap:10px}.brand{padding:4px}.navlabel,.sidefoot{display:none}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap;padding:9px 12px}.nav button span:last-child{font-size:12px}main{padding:18px 14px}.stat{grid-column:span 6}.wide,.narrow,.half{grid-column:1/-1}.quick{grid-template-columns:repeat(2,1fr)}.top{margin-bottom:18px}}
+</style></head>
+<body><div class="shell">
+<aside class="side">
+ <div class="brand"><div class="logo">N</div><div><b>NEXUS</b><small>PERSONAL SYSTEM / 0.3</small></div></div>
+ <div class="navlabel">ENVIRONNEMENT</div>
+ <nav class="nav">
+  <button class="active" data-page="home"><span class="ico">⌂</span><span>Vue générale</span></button>
+  <button data-page="files"><span class="ico">▤</span><span>Explorateur</span></button>
+  <button data-page="terminal"><span class="ico">⌘</span><span>Terminal</span></button>
+  <button data-page="modules"><span class="ico">◇</span><span>Modules</span></button>
+  <button data-page="settings"><span class="ico">⚙</span><span>Paramètres</span></button>
+ </nav>
+ <div class="sidefoot"><span class="dot"></span>CORE OPERATIONNEL<br><span id="sideRoot">Chargement…</span></div>
+</aside>
+<main>
+ <header class="top"><div class="crumb">NEXUS / <span id="crumb">OVERVIEW</span></div><div class="topright"><span class="clock" id="clock">--:--:--</span><span class="status"><span class="dot"></span>EN LIGNE</span></div></header>
+ <section id="page-home">
+  <h1 class="pagehead">Bienvenue dans NEXUS.</h1><p class="sub">Ton environnement personnel. Tout commence ici.</p>
+  <div class="grid">
+   <div class="card stat"><small>ÉTAT DU CORE</small><strong style="color:var(--green)">ONLINE</strong><small>Serveur local actif</small></div>
+   <div class="card stat"><small>VERSION</small><strong id="version">0.3.0</strong><small>NEXUS OS</small></div>
+   <div class="card stat"><small>PYTHON</small><strong id="python">—</strong><small>Moteur principal</small></div>
+   <div class="card stat"><small>ESPACE LIBRE</small><strong id="disk">—</strong><small>Stockage du projet</small></div>
+   <div class="card wide"><div class="cardtitle">Accès rapide <span class="tag">WORKSPACE</span></div><div class="quick">
+    <button onclick="navigate('files')"><span>▤</span><b>Fichiers</b><small class="muted">Explorer le projet</small></button>
+    <button onclick="navigate('terminal')"><span>⌘</span><b>Terminal</b><small class="muted">Commandes sûres</small></button>
+    <button onclick="navigate('modules')"><span>◇</span><b>Modules</b><small class="muted">Architecture</small></button>
+    <button onclick="refreshStatus()"><span>↻</span><b>Actualiser</b><small class="muted">État du système</small></button>
+   </div></div>
+   <div class="card narrow"><div class="cardtitle">État des services</div><div class="rowline"><span>API Core</span><b style="color:var(--green)">ACTIVE</b></div><div class="rowline"><span>Gestion fichiers</span><b style="color:var(--green)">ACTIVE</b></div><div class="rowline"><span>NEXUS AI</span><b style="color:var(--muted)">À CONFIGURER</b></div><div class="rowline"><span>Réseau externe</span><b style="color:var(--muted)">LOCAL</b></div></div>
+   <div class="card full"><div class="cardtitle">Journal système <span class="tag">LIVE</span></div><div id="log" class="muted">[CORE] Initialisation de l'interface…</div></div>
+  </div>
+ </section>
+ <section id="page-files" class="hidden">
+  <h1 class="pagehead">Explorateur</h1><p class="sub">Gestion des fichiers dans l'espace sécurisé NEXUS.</p>
+  <div class="card">
+   <div class="cardtitle"><span id="filePath">/</span><span class="tag">WORKSPACE</span></div>
+   <div class="toolbar"><button class="btn" onclick="upFolder()">↑ Parent</button><button class="btn" onclick="newItem('file')">＋ Fichier</button><button class="btn" onclick="newItem('folder')">＋ Dossier</button><button class="btn" onclick="loadFiles()">↻ Actualiser</button></div>
+   <div id="fileList" class="filelist"><div class="empty">Chargement…</div></div>
+  </div>
+  <div id="editorBox" class="card hidden" style="margin-top:14px"><div class="cardtitle"><span id="editorName">Éditeur</span><button class="btn primary" onclick="saveFile()">Enregistrer</button></div><textarea id="editor" class="editor" spellcheck="false"></textarea></div>
+ </section>
+ <section id="page-terminal" class="hidden">
+  <h1 class="pagehead">Terminal</h1><p class="sub">Console de diagnostic avec commandes autorisées.</p>
+  <div class="card"><div class="cardtitle">NEXUS SHELL <span class="tag">SAFE MODE</span></div><div id="termout" class="terminal">NEXUS-OS [Version 0.3.0]\nMode sécurisé activé.\nTape « help » pour afficher les commandes disponibles.</div><div class="terminalrow"><input id="termcmd" class="input" placeholder="Commande…" onkeydown="if(event.key==='Enter')runCommand()"><button class="btn primary" onclick="runCommand()">Exécuter</button></div><div class="toolbar"><button class="btn" onclick="termHelp()">Aide</button><button class="btn" onclick="clearTerm()">Effacer</button></div></div>
+ </section>
+ <section id="page-modules" class="hidden">
+  <h1 class="pagehead">Modules</h1><p class="sub">Architecture modulaire NEXUS — état et feuille de route.</p>
+  <div class="grid">
+   <div class="card half"><div class="cardtitle">CORE ENGINE <span class="tag">ACTIF</span></div><p class="muted">Serveur HTTP local, API REST, routage et sécurité des chemins.</p></div>
+   <div class="card half"><div class="cardtitle">FILE SYSTEM <span class="tag">ACTIF</span></div><p class="muted">Navigation, création, édition, renommage et suppression dans le workspace.</p></div>
+   <div class="card half"><div class="cardtitle">NEXUS AI <span class="tag">À VENIR</span></div><p class="muted">Assistant central. Nécessitera une connexion à un fournisseur IA et une clé API.</p></div>
+   <div class="card half"><div class="cardtitle">SYSTEM MONITOR <span class="tag">À VENIR</span></div><p class="muted">Surveillance avancée des ressources Android et des processus.</p></div>
+   <div class="card half"><div class="cardtitle">NETWORK <span class="tag">À VENIR</span></div><p class="muted">Diagnostic réseau local, état de connexion et outils de test.</p></div>
+   <div class="card half"><div class="cardtitle">LAB / AUTOMATION <span class="tag">À VENIR</span></div><p class="muted">Espace d'expérimentation et automatisations locales contrôlées.</p></div>
+  </div>
+ </section>
+ <section id="page-settings" class="hidden">
+  <h1 class="pagehead">Paramètres</h1><p class="sub">Configuration et informations de l'environnement.</p>
+  <div class="card"><div class="rowline"><span>Nom du système</span><b>NEXUS-OS</b></div><div class="rowline"><span>Version</span><b>0.3.0</b></div><div class="rowline"><span>Adresse locale</span><b>127.0.0.1:8080</b></div><div class="rowline"><span>Racine projet</span><b id="settingsRoot">—</b></div><div class="rowline"><span>Runtime Python</span><b id="settingsPython">—</b></div><div class="rowline"><span>Mode d'accès</span><b>LOCAL UNIQUEMENT</b></div><p class="muted">Les fichiers accessibles depuis l'explorateur sont limités au dossier du projet NEXUS-OS.</p></div>
+ </section>
+</main></div><div id="toast" class="toast hidden"></div>
+<script>
+let currentPath='', editingPath='';
+const $=id=>document.getElementById(id);
+function toast(s){$('toast').textContent=s;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2300)}
+function navigate(page){document.querySelectorAll('main section').forEach(x=>x.classList.add('hidden'));$('page-'+page).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));$('crumb').textContent=page.toUpperCase();if(page==='files')loadFiles()}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
+function fmt(n){if(n<1024)return n+' o';if(n<1048576)return(n/1024).toFixed(1)+' Ko';if(n<1073741824)return(n/1048576).toFixed(1)+' Mo';return(n/1073741824).toFixed(1)+' Go'}
+async function api(url,opts={}){let r=await fetch(url,opts);let d=await r.json();if(!r.ok)throw Error(d.error||'Erreur API');return d}
+async function refreshStatus(){try{let d=await api('/api/status');$('version').textContent=d.version;$('python').textContent=d.python;$('disk').textContent=fmt(d.disk_free);$('sideRoot').textContent=d.root;$('settingsRoot').textContent=d.root;$('settingsPython').textContent=d.python;$('log').textContent='['+d.time+'] CORE opérationnel — API disponible — '+d.platform; }catch(e){$('log').textContent='Erreur de connexion : '+e.message}}
+async function loadFiles(){try{let d=await api('/api/files?path='+encodeURIComponent(currentPath));currentPath=d.path;$('filePath').textContent='/'+currentPath;$('fileList').innerHTML='';if(!d.items.length)$('fileList').innerHTML='<div class="empty">Dossier vide</div>';d.items.forEach(it=>{let el=document.createElement('div');el.className='fileitem';let ico=it.type==='folder'?'📁':'📄';let name=document.createElement('div');name.innerHTML='<b></b><br><small></small>';name.querySelector('b').textContent=it.name;name.querySelector('small').textContent=it.type==='folder'?'Dossier':fmt(it.size)+' · '+it.modified;let open=document.createElement('button');open.textContent=ico+' '+it.name;open.onclick=()=>it.type==='folder'?(currentPath=it.path,loadFiles()):openFile(it.path);let ops=document.createElement('button');ops.textContent='⋯';ops.onclick=()=>fileActions(it);el.append(open,name,ops);$('fileList').append(el)})}catch(e){$('fileList').innerHTML='<div class="empty">'+e.message+'</div>'}}
+function upFolder(){if(!currentPath)return;currentPath=currentPath.split('/').slice(0,-1).join('/');loadFiles()}
+async function newItem(type){let name=prompt(type==='folder'?'Nom du dossier':'Nom du fichier');if(!name)return;try{await api('/api/files/create',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:currentPath,name,type})});toast('Élément créé');loadFiles()}catch(e){toast(e.message)}}
+async function fileActions(it){let action=prompt('Action pour '+it.name+' :\n1 = Renommer\n2 = Supprimer');if(action==='1'){let name=prompt('Nouveau nom',it.name);if(!name)return;try{await api('/api/files/rename',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:it.path,name})});loadFiles()}catch(e){toast(e.message)}}else if(action==='2'&&confirm('Supprimer '+it.name+' ?')){try{await api('/api/files/delete',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:it.path})});toast('Supprimé');loadFiles()}catch(e){toast(e.message)}}}
+async function openFile(path){try{let d=await api('/api/read?path='+encodeURIComponent(path));editingPath=path;$('editorName').textContent=path;$('editor').value=d.content;$('editorBox').classList.remove('hidden')}catch(e){toast(e.message)}}
+async function saveFile(){try{await api('/api/files/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({path:editingPath,content:$('editor').value})});toast('Fichier enregistré')}catch(e){toast(e.message)}}
+function termHelp(){$('termout').textContent+='\\nCommandes disponibles : help, pwd, ls, whoami, date, python --version, git status, du -sh ., clear'}
+function clearTerm(){$('termout').textContent='NEXUS-OS [0.3.0]\\nConsole effacée.'}
+async function runCommand(){let c=$('termcmd').value.trim();if(!c)return;$('termcmd').value='';if(c==='help'){termHelp();return}if(c==='clear'){clearTerm();return}try{let d=await api('/api/terminal',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({command:c})});$('termout').textContent+='\\n$ '+c+'\\n'+(d.output||'(aucune sortie)')}catch(e){$('termout').textContent+='\\n$ '+c+'\\n[REFUS] '+e.message}}
+setInterval(()=>{$('clock').textContent=new Date().toLocaleTimeString('fr-FR')},1000);refreshStatus();setInterval(refreshStatus,30000);
+</script></body></html>

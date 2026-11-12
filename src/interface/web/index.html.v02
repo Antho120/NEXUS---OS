@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070d1b">
+<title>NEXUS OS</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: #070d1b;
+    color: #eaf2ff;
+    font-family: Arial, sans-serif;
+    padding: 22px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: #49aaff;
+}
+
+.version {
+    color: #8295b5;
+    font-size: 12px;
+}
+
+h1 {
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #8295b5;
+    margin-bottom: 25px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background: #101b30;
+    border: 1px solid #1d3558;
+    border-radius: 15px;
+    padding: 20px;
+    min-height: 125px;
+}
+
+.card h3 {
+    color: #8295b5;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-top: 0;
+}
+
+.value {
+    font-size: 22px;
+    font-weight: bold;
+    color: #49aaff;
+    overflow-wrap: anywhere;
+}
+
+.small {
+    color: #8295b5;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.status {
+    color: #43e6a0;
+}
+
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 17px;
+    border: 1px solid #267acb;
+    border-radius: 12px;
+    background: #12345a;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 35px;
+    color: #647895;
+    font-size: 12px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">NEXUS</div>
+    <div class="version" id="version">INITIALISATION...</div>
+</header>
+
+<h1>Centre de contrôle</h1>
+<div class="subtitle">Interface centrale du système NEXUS</div>
+
+<div class="grid">
+
+    <div class="card">
+        <h3>CORE SYSTEM</h3>
+        <div class="value status" id="core">CONNEXION...</div>
+        <div class="small">État du noyau central</div>
+    </div>
+
+    <div class="card">
+        <h3>PYTHON ENGINE</h3>
+        <div class="value" id="python">--</div>
+        <div class="small">Version de Python</div>
+    </div>
+
+    <div class="card">
+        <h3>DEVICE</h3>
+        <div class="value" id="device">--</div>
+        <div class="small">Architecture matérielle</div>
+    </div>
+
+    <div class="card">
+        <h3>PLATFORM</h3>
+        <div class="value" id="platform">--</div>
+        <div class="small">Système hôte</div>
+    </div>
+
+    <div class="card">
+        <h3>HORLOGE SYSTÈME</h3>
+        <div class="value" id="clock">--:--:--</div>
+        <div class="small" id="date">--</div>
+    </div>
+
+    <div class="card">
+        <h3>NETWORK API</h3>
+        <div class="value status" id="api">EN ATTENTE</div>
+        <div class="small">Communication avec NEXUS CORE</div>
+    </div>
+
+</div>
+
+<button onclick="refreshStatus()">ACTUALISER LE SYSTÈME</button>
+
+<footer>
+    NEXUS OS — PROJECT 0.3<br>
+    Independent computing environment
+</footer>
+
+<script>
+async function refreshStatus() {
+    const api = document.getElementById("api");
+
+    try {
+        const response = await fetch("/api/status");
+        if (!response.ok) throw new Error("API indisponible");
+
+        const data = await response.json();
+
+        document.getElementById("version").textContent =
+            "CORE " + data.version;
+
+        document.getElementById("core").textContent =
+            data.core;
+
+        document.getElementById("python").textContent =
+            data.python;
+
+        document.getElementById("device").textContent =
+            data.device;
+
+        document.getElementById("platform").textContent =
+            data.platform;
+
+        api.textContent = "CONNECTÉ";
+        api.style.color = "#43e6a0";
+
+    } catch (error) {
+        document.getElementById("core").textContent = "HORS LIGNE";
+        api.textContent = "DÉCONNECTÉ";
+        api.style.color = "#ff647c";
+    }
+}
+
+function updateClock() {
+    const now = new Date();
+
+    document.getElementById("clock").textContent =
+        now.toLocaleTimeString("fr-FR");
+
+    document.getElementById("date").textContent =
+        now.toLocaleDateString("fr-FR", {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
+}
+
+refreshStatus();
+updateClock();
+
+setInterval(refreshStatus, 5000);
+setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>

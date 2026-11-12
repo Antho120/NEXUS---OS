@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXUS OS</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #07111f;
+  color: #eaf4ff;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  padding: 25px;
+  border-bottom: 1px solid #19334f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #48c8ff;
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+main { padding: 22px; }
+
+h1 { font-size: 27px; margin-bottom: 5px; }
+
+.subtitle { color: #809bb7; }
+
+.clock {
+  font-size: 38px;
+  color: #48c8ff;
+  margin: 25px 0;
+  font-weight: bold;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 13px;
+  margin-top: 25px;
+}
+
+.card {
+  background: #101f32;
+  border: 1px solid #203d5c;
+  border-radius: 15px;
+  padding: 19px;
+  min-height: 125px;
+}
+
+.card h3 {
+  color: #48c8ff;
+  margin-top: 0;
+}
+
+.card p {
+  color: #9db3ca;
+  font-size: 13px;
+}
+
+.status { color: #42e6a4 !important; }
+
+button {
+  background: #123b5c;
+  border: 1px solid #258ac1;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 9px;
+  margin-top: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #59748f;
+  font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">NEXUS</div>
+  <div class="status">● SYSTEM ONLINE</div>
+</header>
+
+<main>
+  <h1>Bienvenue dans NEXUS</h1>
+  <div class="subtitle">Your intelligent environment</div>
+
+  <div class="clock" id="clock">00:00:00</div>
+
+  <div class="subtitle" id="date"></div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>CORE</h3>
+      <p>Moteur central</p>
+      <p class="status">● OPERATIONAL</p>
+    </div>
+
+    <div class="card">
+      <h3>NEXUS AI</h3>
+      <p>Intelligence artificielle</p>
+      <p>En développement</p>
+    </div>
+
+    <div class="card">
+      <h3>SYSTEM</h3>
+      <p>Environnement Android</p>
+      <p class="status">● CONNECTED</p>
+    </div>
+
+    <div class="card">
+      <h3>SERVICES</h3>
+      <p>Services intelligents</p>
+      <p>En préparation</p>
+    </div>
+
+  </div>
+
+  <button onclick="alert('NEXUS Core v0.1')">
+    Informations système
+  </button>
+
+</main>
+
+<footer>
+  NEXUS OS · VERSION 0.1.0 · PROJECT DEVELOPMENT
+</footer>
+
+<script>
+function updateClock() {
+  const now = new Date();
+  document.getElementById("clock").textContent =
+    now.toLocaleTimeString("fr-FR");
+
+  document.getElementById("date").textContent =
+    now.toLocaleDateString("fr-FR", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    });
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>
